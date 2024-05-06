@@ -22,6 +22,7 @@ export default function FinancialRecordForm() {
           placeholder="Description"
           onChange={handleChange}
           value={formData?.description}
+          required
         />
         <input
           type="number"
@@ -30,6 +31,7 @@ export default function FinancialRecordForm() {
           className="border-2 p-2 min-w-full  rounded-lg outline-none hover:bg-gray-100 "
           placeholder="Amount"
           onChange={handleChange}
+          required
           value={formData?.amount}
 
         />
@@ -39,6 +41,7 @@ export default function FinancialRecordForm() {
           onChange={handleChange}
           className="border-2 p-2 min-w-full rounded-lg outline-none hover:bg-gray-100"
           value={formData?.category}
+          required
 
         >
           <option value="">Select a Category</option>
@@ -55,6 +58,7 @@ export default function FinancialRecordForm() {
           id="payment"
           onChange={handleChange}
           value={formData?.payment}
+          required
           className="border-2 p-2 min-w-full rounded-lg outline-none hover:bg-gray-100"
         >
           <option value="">Select a Payment Method</option>
