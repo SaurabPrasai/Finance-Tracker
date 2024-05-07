@@ -1,16 +1,36 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import {useUser} from "@clerk/clerk-react"
+import { financeRecordContext } from "../context/FinanceRecordContext";
 
 export default function FinancialRecordForm() {
-    const [formData,setFormData]=useState({});
+  const [formData, setFormData] = useState({});
+  const {user}=useUser()
+  const {setRecords,records}=useContext(financeRecordContext)
 
-    const handleFormSubmit=(e)=>{
-            e.preventDefault();
-           setFormData({description:"",amount:"",category:"",payment:""})
+  const handleFormSubmit = async(e) => {
+    e.preventDefault();
+    try {
+      const response=await fetch("/api/saverecord",{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({...formData,userId:user.id})
+      })
+      const data=await response.json();
+      if(!response.ok){
+      return  console.log("Form data not submitted");
+      }
+      setRecords([...records,data])
+      setFormData({ description: "", amount: "", category: "", payment: "" });
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    const handleChange=(e)=>{
-        setFormData({...formData,[e.target.id]:e.target.value})
-    }
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
   return (
     <div className=" max-w-6xl mx-auto " onSubmit={handleFormSubmit}>
       <form className=" max-w-lg sm:max-w-6xl p-2 mx-auto flex flex-col gap-4">
@@ -33,7 +53,6 @@ export default function FinancialRecordForm() {
           onChange={handleChange}
           required
           value={formData?.amount}
-
         />
         <select
           name=""
@@ -42,7 +61,6 @@ export default function FinancialRecordForm() {
           className="border-2 p-2 min-w-full rounded-lg outline-none hover:bg-gray-100"
           value={formData?.category}
           required
-
         >
           <option value="">Select a Category</option>
           <option value="Food">Food</option>

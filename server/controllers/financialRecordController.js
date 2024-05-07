@@ -25,22 +25,23 @@ export const updateRecord = async (req, res) => {
   try {
     const updateRecord = await FinancialRecordModel.findByIdAndUpdate(
       id,
-      req.body,{
-        new:true
+      req.body,
+      {
+        new: true,
       }
     );
-    res.status(201).json(updateRecord)
+    res.status(201).json(updateRecord);
   } catch (error) {
     console.log(error);
   }
 };
 
 export const deleteRecord = async (req, res) => {
-    const id=req.params.id;
-    try {
-        const record=await FinancialRecordModel.findByIdAndDelete(id);
-        return res.status(200).json(record)
-    } catch (error) {
-        console.log(error);
-    }
+  const id = req.params.id;
+  try {
+    const record = await FinancialRecordModel.findByIdAndDelete(id);
+    return res.status(200).json(record);
+  } catch (error) {
+    console.log(error);
+  }
 };
