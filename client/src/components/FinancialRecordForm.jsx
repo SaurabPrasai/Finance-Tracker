@@ -21,7 +21,7 @@ export default function FinancialRecordForm() {
       if(!response.ok){
       return  console.log("Form data not submitted");
       }
-      setRecords([...records,data])
+      setRecords((prev)=>[...prev,data])
       setFormData({ description: "", amount: "", category: "", payment: "" });
     } catch (error) {
       console.log(error);
