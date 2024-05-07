@@ -7,7 +7,6 @@ const financialSchema = new mongoose.Schema({
   },
   date: {
     type: Date,
-    required: true,
   },
   description: {
     type: String,
