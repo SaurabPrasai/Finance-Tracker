@@ -33,7 +33,7 @@ export default function FinancialRecordForm() {
   };
   return (
     <div className=" max-w-6xl mx-auto " onSubmit={handleFormSubmit}>
-      <form className=" max-w-lg sm:max-w-6xl p-2 mx-auto flex flex-col gap-4">
+      <form className=" max-w-lg sm:max-w-6xl p-2 mx-auto flex flex-col gap-6">
         <input
           type="text"
           name=""
