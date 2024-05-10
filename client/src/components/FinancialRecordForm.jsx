@@ -15,7 +15,7 @@ export default function FinancialRecordForm() {
         headers:{
           "Content-Type":"application/json"
         },
-        body:JSON.stringify({...formData,userId:user.id})
+        body:JSON.stringify({...formData,userId:user.id,date:Date.now()})
       })
       const data=await response.json();
       if(!response.ok){

@@ -25,13 +25,14 @@ export default function FinancialRecordList() {
 
   const handleSubmit=async(id)=>{
 
+    const date=Date.now();
   try {
       const res=await fetch(`/api/update/${id}`,{
         method:"PUT",
         headers:{
           "Content-Type":"application/json"
         },
-        body:JSON.stringify(updateData)
+        body:JSON.stringify({...updateData,date})
       })
     
       const data=await res.json();
