@@ -54,7 +54,7 @@ export default function FinancialRecordList() {
     setUpdateData({ ...updateData, [e.target.id]: e.target.value });
   };
   return (
-    <div className=" mx-auto max-w-6xl sm:rounded-lg mt-10">
+    <div className=" mx-auto max-w-7xl sm:rounded-lg mt-10">
       {records.length > 0 && (
         <table className="w-full text-center text-gray-600  font-serif">
           <thead className="text-xl">
